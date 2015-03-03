@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+for ((i = 0; i < 256; i++)); do
+    echo -e "%{$fg[$i]%}Test%{$reset_color%}"
+done

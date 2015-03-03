@@ -1,0 +1,17 @@
+! xterm config section
+!----------------------------------------------
+xterm*geometry: 200x50
+
+! fix Meta key error
+xterm*eightBitInput: false
+xterm*eightBitOutput: true
+
+! scrolling
+xterm*saveLines: 4096
+
+! color settings
+!xterm*background: #111111
+!xterm*foreground: #EAEDE6
+
+! clipboard selection
+xterm*selectToClipboard: true

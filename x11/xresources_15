@@ -1,0 +1,3 @@
+#include "/home/qwattash/git/config/term/xterm/xterm"
+#include "/home/qwattash/git/config/term/urxvt/urxvt_15"
+#include "/home/qwattash/git/config/term/theme/theme"

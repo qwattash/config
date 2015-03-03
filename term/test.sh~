@@ -1,0 +1,19 @@
+
+source output.sh
+
+source ../shell/common/stat.sh
+source ../shell/common/arch.sh
+
+space 20 
+
+draw_block 1 5 $(build_arch_art)
+
+#draw_block_relative_row -4 5 "SomeN\nmultilineN\ntext with spaces hello!"
+
+#draw_row 3 40 0 "<endblock>" "Some\nmultiline\ntext\nhello!<endblock>\
+#Other1\nMultiline\nshit with space<endblock>\
+#Other2\nMultiline\nshit with space<endblock>\
+#Other3\nMultiline\nshit with space<endblock>\
+#Other4\nMultiline\nshit with space"
+
+#draw_row 5 5 0 "<endblock>" "$(build_arch_art)" #<endblock>$(build_stat_widget)"

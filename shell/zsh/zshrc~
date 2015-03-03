@@ -1,0 +1,49 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=2048
+SAVEHIST=1000
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/qwattash/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# aliases
+emacs() {TERM=xterm-256color /usr/bin/emacs $*}
+alias multihead='xrandr --output HDMI1 --mode 2560x1440 --right-of LVDS1'
+alias doto='xrandr --output HDMI1 --mode 1280x720 --right-of LVDS1'
+
+
+# completion
+zstyle ':completion:*' special-dirs true
+
+# if not running interactively end here
+[[ $- != *i* ]] && return
+
+CONF_BASE=~/git/config/
+
+# load colors
+autoload -U colors
+colors
+
+source ${CONF_BASE}/shell/common/stat.sh
+source ${CONF_BASE}/shell/common/fortune.sh
+source ${CONF_BASE}/shell/common/arch.sh
+source ${CONF_BASE}/term/output.sh
+
+draw_row 5 45 0 "<endblock>" "$(build_arch_art)<endblock>$(build_stat_widget)"
+draw_row 2 0 0 "<endblock>" "$(build_fortune_widget)"
+
+# custom vars
+User=$(whoami)
+Host=$(uname -n)
+Kernel=$(uname -r)
+Cpu=$(cat /proc/cpuinfo | grep "model name" | uniq | cut -d':' -f2)
+Arch=$(uname -m)
+
+RPROMPT=""
+PROMPT="[%{$fg[yellow]%}${User}@%{$fg[blue]%}${Host} %{$fg[green]%]%~%{$reset_color%}]%# "
