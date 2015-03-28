@@ -15,18 +15,20 @@ $(@)EMACS_DIR_CONF_TGT := $(@EMACS_CONF_BASE)/.emacs.d
 $(@>)
 
 $(call anrem-target, @EMACS_MAIN_CONF_TGT): $(@EMACS_MAIN_CONF_SRC)
+	if [ ! -e $@.bak ]; then cp -r $@ $@.bak; fi
 	cp $< $@
 
 $(call anrem-target, @EMACS_DIR_CONF_TGT): $(@EMACS_DIR_CONF_SRC)
+	if [ ! -e $@.bak ]; then cp -r $@ $@.bak; fi
 	cp -R $< $@/*
 
 .PHONY: emacs
 # main target for this module
-$(call anrem-target, emacs): emacs-clean $(@EMACS_MAIN_CONF_TGT) $(@EMACS_DIR_CONF_TGT)
+$(call anrem-target, emacs): $(@EMACS_MAIN_CONF_TGT) $(@EMACS_DIR_CONF_TGT)
 
-$(call anrem-clean, emacs-clean): emacs-bakclean
-	-mv $(@EMACS_MAIN_CONF_TGT) $(@EMACS_MAIN_CONF_TGT).bak
-	-mv $(@EMACS_DIR_CONF_TGT) $(@EMACS_DIR_CONF_TGT).bak
+$(call anrem-clean, emacs-clean):
+	rm $(@EMACS_MAIN_CONF_TGT)
+	rm -r $(@EMACS_DIR_CONF_TGT)
 
 $(call anrem-target, emacs-bakclean):
 	rm -f $(@EMACS_MAIN_CONF_TGT).bak

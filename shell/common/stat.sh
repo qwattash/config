@@ -1,4 +1,4 @@
-source ~/git/config/term/colors.sh
+source ~/git/config/shell/common/colors.sh
 
 # Mem statistics
 MemTot=$(cat /proc/meminfo | grep "MemTotal" | cut -d":" -f2 | sed -r "s/[ \t]+([0-9]+) ?kB/\1/")
@@ -51,7 +51,7 @@ BatString="${BatLCol}${BatPerc}% ${Purple}${BatEst} ${BatSCol}${BatSt}"
 
 function build_stat_widget() {
 echo -ne "\
-${LGray}+----------------------------------------------------------+  
+${LGray}+----------------------------------------------------------+
 ${LGray}|
 ${LGray}|    ${Brown}User: ${Purple}${User}
 ${LGray}|    ${Brown}Host: ${Purple}${Host}

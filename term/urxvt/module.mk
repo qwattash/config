@@ -19,13 +19,14 @@ $(call anrem-target, @URXVT_CONF_TGT): $(@URXVT_CONF_SRC)
 	cp $< $@
 
 # patch Xresources to include urxvt config and install
-$(call anrem-target, urxvt): urxvt-clean $(@URXVT_CONF_TGT) $(x11|xresources)
+$(call anrem-target, urxvt): $(@URXVT_CONF_TGT) $(x11|xresources)
+	if [ ! -e $@.bak ]; then cp $@ $@.bak; fi
 	cp -R $< $@
 
-$(call anrem-clean, urxvt-clean): urxvt-bakclean
+$(call anrem-clean, urxvt-clean):
 	-mv $(@URXVT_CONF_TGT) $(@URXVT_CONF_TGT).bak
 
-$(call anrem-target, emacs-bakclean):
+$(call anrem-target, urxvt-bakclean):
 	rm -f $(@URXVT_CONF_TGT).bak
 
 # register backup cleaning target to the cleanup group

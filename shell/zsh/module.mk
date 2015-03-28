@@ -1,5 +1,5 @@
 #
-# copy emacs conf in place in the user filesystem
+# copy zsh conf in place in the user filesystem
 #
 
 path := $(call anrem-current-path)
@@ -12,14 +12,15 @@ $(<@)
 $(@)ZSH_CONF_TGT := $(@ZSH_CONF_BASE)/.zshrc
 $(@>)
 
-$(call anrem-target, @ZSH_CONF_TGT): $(@ZSH_CONF_SRC)
+$(call anrem-target, @ZSH_CONF_TGT): $(@ZSH_CONF_SRC) sh-common
+	if [ ! -e $@.bak ]; then cp $@ $@.bak; fi
 	cp $< $@
 
 # main target for this module
 $(call anrem-target, zsh): $(@ZSH_CONF_TGT)
 
 
-$(call anrem-clean): zsh-bakclean
+$(call anrem-clean):
 	-mv $(@ZSH_CONF_TGT) $(@ZSH_CONF_TGT).bak
 
 $(call anrem-target, zsh-bakclean):

@@ -3,7 +3,6 @@
 # home directory alias
 HOME := $(abspath $(wildcard ~/))
 
-
 .PHONY: conf_all bakclean
 
 $(call anrem-build, conf_all): emacs

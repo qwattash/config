@@ -1,4 +1,4 @@
-source ~/git/config/term/colors.sh
+source ~/git/config/shell/common/colors.sh
 
 
 function build_arch_art() {

@@ -25,19 +25,24 @@ zstyle ':completion:*' special-dirs true
 # if not running interactively end here
 [[ $- != *i* ]] && return
 
-CONF_BASE=~/git/config/
-
 # load colors
 autoload -U colors
 colors
 
-source ${CONF_BASE}/shell/common/stat.sh
-source ${CONF_BASE}/shell/common/fortune.sh
-source ${CONF_BASE}/shell/common/arch.sh
-source ${CONF_BASE}/term/output.sh
 
-draw_row 5 45 0 "<endblock>" "$(build_arch_art)<endblock>$(build_stat_widget)"
-draw_row 2 0 0 "<endblock>" "$(build_fortune_widget)"
+base=~/.config/shell-commons
+
+source ${base}/arch.sh
+source ${base}/stat.sh
+source ${base}/fortune.sh
+
+term_width=$(tput cols)
+
+# debug mode
+echo -ne "$(build_arch_art)<sep>$(build_stat_widget)<sep><sep>$(build_fortune_widget | fmt -w ${term_width} -s)<sep><sep><sep>" | python ${base}/gen-screen.py -m ${term_width} -c 30 -r 2 -t 2 -l 3 -s "<sep>"
+
+#draw_row 5 45 0 "<endblock>" "$(build_arch_art)<endblock>$(build_stat_widget)"
+#draw_row 2 0 0 "<endblock>" "$(build_fortune_widget)"
 
 # custom vars
 User=$(whoami)

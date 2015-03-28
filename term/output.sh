@@ -4,7 +4,7 @@
 # @author Alfredo Mazzinghi
 #
 
-source ~/git/config/term/base.sh
+ESC='\e'
 
 # create space for the rendering
 #
@@ -52,7 +52,6 @@ function draw() {
     echo -nE ${3}
     tput rc
 }
-
 
 # render a block of text starting from given position
 #
