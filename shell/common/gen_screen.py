@@ -225,6 +225,7 @@ class IssueFile:
         for row in self.rows:
             row.draw(out)
 
+            
 class BaseIssueGenerator:
     """ Base state pattern generator
     :class:
@@ -278,6 +279,7 @@ class BaseIssueGenerator:
             print("[+] switch state {0} -> {1}".format(type(self), state))
         self.__class__ = state
 
+        
 class NewRowState(BaseIssueGenerator):
     """ Add a new row as soon as new input comes
     This is the initial state.
@@ -301,6 +303,7 @@ class NewRowState(BaseIssueGenerator):
             self.switch(NewBlockState)
             self.receive(data)
 
+            
 class NewBlockState(BaseIssueGenerator):
     """ Add new block to the current row and switch to the input state
     -> BlockInputState
@@ -331,8 +334,7 @@ class NewBlockState(BaseIssueGenerator):
             self.row.append(Block(**kwargs))
             self.switch(BlockInputState)
             self.receive(data)
-
-GLOB = False
+            
 
 class BlockInputState(BaseIssueGenerator):
     """ State that appends
@@ -354,14 +356,16 @@ class BlockInputState(BaseIssueGenerator):
             self.receive(data)
         elif len(data) > 0:
             # check if there are multiple separators in the data
-            match = re.match("(.*?)(({0}).*)".format(self.separator), data)
+            match = re.match("(.*?)({0})(.*)".format(self.separator), data)
             if match:
-                # if there are separators, append everything until the first one and then delegate
-                # to the receive funcion recursively, which will go to NewBlockState
+                # if there are separators, append everything until the first one and
+                # then delegate to the receive funcion recursively,
+                # which will go to NewBlockState
                 block_data = match.group(1)
                 self.block.append(block_data)
-                if match.group(2, 1) != "":
-                    self.receive(match.group(2))
+                self.switch(NewBlockState)
+                if match.group(3) != "":
+                    self.receive(match.group(3))
             else:
                 # if no separators are in the line received, append the line directly
                 self.block.append(data)
@@ -370,10 +374,19 @@ class BlockInputState(BaseIssueGenerator):
             # limit violation, check if we can fix by moving the last block to a new row
             if self.block.width > self.limit:
                 # we appended a row longer than the limit, splitting is useless
-                raise ValueError("Block width limit exceeded: {0}/{1}".format(self.block.width, self.limit))
+                # just return silently instead of raising an exception
+                if DEBUG:
+                    print("Block width limit exceeded: {0}/{1}".format(
+                        self.block.width,
+                        self.limit))
+                # restart from clean block
+                self.row.blocks.remove(self.block)
+                self.switch(NewBlockState)
+                return
             # the row is safe to split
             blk = self.block
             self.row.blocks.remove(blk)
+            self.switch(NewRowState)
             for line in blk:
                 self.receive(line)
                 
