@@ -2,3 +2,11 @@
 	path = anrem
 	url = https://github.com/qwattash/anrem.git
 	branch = master
+[submodule "emacs/emacs.d/plugins/local-conf-mode.el"]
+	path = emacs/emacs.d/plugins/local-conf-mode.el
+	url = https://github.com/qwattash/local-conf-mode.git
+	branch = master
+[submodule "emacs/emacs.d/plugins/forge-mode.el"]
+	path = emacs/emacs.d/plugins/forge-mode.el
+	url = https://github.com/qwattash/forge-mode.git
+	branch = master

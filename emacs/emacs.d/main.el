@@ -3,8 +3,12 @@
 ; add config folder to load path
 (add-to-list 'load-path "~/.emacs.d/config/")
 
+;; enable modes
+
 ;; enable column number
 (setq column-number-mode t)
+
+;; key remapping
 
 ;; remap arrow keys to resize windows
 (global-set-key (kbd "<left>") 'shrink-window-horizontally)
