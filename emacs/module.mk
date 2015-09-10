@@ -20,7 +20,8 @@ $(call anrem-target, @EMACS_MAIN_CONF_TGT): $(@EMACS_MAIN_CONF_SRC)
 
 $(call anrem-target, @EMACS_DIR_CONF_TGT): $(@EMACS_DIR_CONF_SRC)
 	if [ ! -e $@.bak ]; then cp -r $@ $@.bak; fi
-	cp -R $< $@/*
+	mkdir -p $@
+	cp -R $</* $@
 
 .PHONY: emacs
 # main target for this module

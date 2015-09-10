@@ -1,5 +1,7 @@
 ; add plugin dir to load path
 (add-to-list 'load-path "~/.emacs.d/plugins/")
+(add-to-list 'load-path "~/.emacs.d/plugins/forge-mode/")
+(add-to-list 'load-path "~/.emacs.d/plugins/local-conf-mode/")
 ; add config folder to load path
 (add-to-list 'load-path "~/.emacs.d/config/")
 

@@ -42,7 +42,7 @@ URxvt.font: xft:anonymous pro:pixelsize=14
 URxvt.boldFont: xft:anonymous pro:bold:pixelsize=14
 URxvt.italicFont: xft:anonymous pro:italic:pixelsize=14
 URxvt.bolditalicFont: xft:anonymous pro:bold italic:pixelsize=14
-URxvt.letterSpace: 1
+URxvt.letterSpace: 0
 
 ! ----- monospace
 !URxvt.font: xft:Monospace:medium:pixelsize=11

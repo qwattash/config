@@ -1,0 +1,7 @@
+
+# Tidy emacs module.mk
+# change zsh install to link mode
+# change tmux install to link mode
+# change urxvt install to link mode
+
+# x11 install to ~/.Xresources
