@@ -31,7 +31,7 @@ alias jdk8='sudo archlinux-java set java-8-openjdk'
 alias jdk7='sudo archlinux-java set java-7-openjdk'
 
 # useful general purpose aliases
-alias up='cd ..'
+alias u='cd ..'
 alias l='ls'
 alias ll='ls -l'
 pd() {pushd $*}
