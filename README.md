@@ -1,4 +1,1 @@
-# config
-Configuration files
-
-# Currently moving to make system
+# Dotfiles repository for my configurations

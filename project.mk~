@@ -1,4 +1,0 @@
-# main build target
-
-.INTERMEDIATE: conf_all
-$(call anrem-build, conf_all): emacs

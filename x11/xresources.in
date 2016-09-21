@@ -1,0 +1,3 @@
+#include "$ENV{HOME}/.config/x11/xterm.conf"
+#include "$ENV{HOME}/.config/x11/urxvt.conf"
+#include "$ENV{HOME}/.config/x11/theme.conf"

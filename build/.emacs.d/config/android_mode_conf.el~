@@ -1,4 +1,0 @@
-; elpa package use eval-after-load
-(eval-after-load "android-mode"
-
-)

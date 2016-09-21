@@ -1,7 +1,3 @@
-[submodule "anrem"]
-	path = anrem
-	url = https://github.com/qwattash/anrem.git
-	branch = master
 [submodule "emacs/emacs.d/plugins/local-conf-mode.el"]
 	path = emacs/emacs.d/plugins/local-conf-mode
 	url = https://github.com/qwattash/local-conf-mode.git
@@ -9,4 +5,8 @@
 [submodule "emacs/emacs.d/plugins/forge-mode.el"]
 	path = emacs/emacs.d/plugins/forge-mode
 	url = https://github.com/qwattash/forge-mode.git
+	branch = master
+[submodule "themes/tomorrow-theme"]
+	path = themes/tomorrow-theme
+	url = https://github.com/chriskempson/tomorrow-theme.git
 	branch = master
