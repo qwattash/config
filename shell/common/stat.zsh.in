@@ -1,0 +1,68 @@
+
+source @ZSH_CONF_PATH@/colors.zsh
+
+# Mem statistics
+MemTot=$(cat /proc/meminfo | grep "MemTotal" | cut -d":" -f2 | sed -r "s/[ \t]+([0-9]+) ?kB/\1/")
+MemAvail=$(cat /proc/meminfo | grep "MemAvail" | cut -d":" -f2 | sed -r "s/[ \t]+([0-9]+) ?kB/\1/")
+MemUsed=$((${MemTot} - ${MemAvail}))
+MemPercent=$((${MemUsed} * 100 / ${MemTot}))
+
+# Fs statistics
+FsRootTot=$(df -h | grep "/$" | sed -n "s/ \+/ /gp" | cut -d" " -f2)
+FsRootUsed=$(df -h | grep "/$" | sed -n "s/ \+/ /gp" | cut -d" " -f3)
+FsRootPercent=$(df -h | grep "/$" | sed -n "s/ \+/ /gp" | cut -d" " -f5)
+
+# Process statistics
+ProcNo=$(pidstat | wc -l)
+
+# battery
+# percent value
+BatPerc=$(acpi | sed "s/,//g" | cut -d " " -f4 | sed "s/%//g")
+# charging / discharging
+BatSt=$(acpi | sed "s/,//g" | cut -d " " -f3)
+# remaining time
+BatEst=$(acpi | sed "s/,//g" | cut -d " " -f5)
+
+# color of battery status
+if [[ "${BatSt}" == "Discharging" ]]; then 
+    BatSCol="$ANSI[red]"
+else
+    BatSCol="$ANSI[green]"
+fi
+# color of battery level
+if [[ "${BatPerc}" -lt "30" ]]; then
+    BatLCol="$ANSI[red]"
+else
+    BatLCol="$ANSI[green]"
+fi
+
+User=$(whoami)
+Host=$(uname -n)
+Kernel=$(uname -r)
+Arch=$(uname -m)
+
+FsRootString="$ANSI[yellow]${FsRootUsed}$FX[reset]/$ANSI[green]${FsRootTot} $ANSI[purple]${FsRootPercent}%"
+MemString="$ANSI[yellow]${MemUsed}K$FX[reset]/$ANSI[green]${MemTot}K $ANSI[purple]${MemPercent}%%"
+BatString="${BatLCol}${BatPerc}%% $ANSI[purple]${BatEst} ${BatSCol}${BatSt}$FX[reset]"
+
+function build_stat_widget() {
+print -P -R "\
+$FX[reset]+----------------------------------------------------------+
+$FX[reset]|
+$FX[reset]|    $ANSI[cyan]User: ${Purple}${User}
+$FX[reset]|    $ANSI[cyan]Host: ${Purple}${Host}
+$FX[reset]|    $ANSI[cyan]Kernel: ${Purple}${Kernel} ${Arch}
+$FX[reset]|
+$FX[reset]|
+$FX[reset]|    $ANSI[cyan]/: ${FsRootString}
+$FX[reset]|
+$FX[reset]|
+$FX[reset]|    $ANSI[cyan]Procs: ${Purple}${ProcNo}
+$FX[reset]|    $ANSI[cyan]Mem: ${MemString}
+$FX[reset]|
+$FX[reset]|
+$FX[reset]|
+$FX[reset]|    $ANSI[cyan]Battery: ${BatString}
+$FX[reset]|
+$FX[reset]+----------------------------------------------------------+"
+}

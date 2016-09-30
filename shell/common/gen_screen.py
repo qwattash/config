@@ -8,7 +8,7 @@ import sys
 import re
 
 # enable debug output
-DEBUG = False
+DEBUG = True
 
 # terminal escape sequences
 term_esc = re.compile("\x1b\[[0-9;]*m")
@@ -153,7 +153,9 @@ class Row:
         :raises ValueError: when the block makes the row overflow the limit
         """
         if len(self) + len(block) + self.h_spacing > self.limit:
-            raise ValueError("The block causes overflow")
+            raise ValueError("The block causes overflow: "
+                             "limit %d < row %d + block %d + spacing %d" %
+                             (self.limit, len(self), len(block), self.h_spacing))
         self.blocks.append(block)
 
     def __len__(self):

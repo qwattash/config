@@ -1,0 +1,10 @@
+#
+# This shows the fortune message in a color among the 8
+# standard possible colors (except background)
+#
+
+source @ZSH_CONF_PATH@/colors.zsh
+
+function build_fortune_widget() {
+    print -P -- "$FG[001]" "$(fortune)" "$FX[reset]"
+}
