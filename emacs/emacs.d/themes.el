@@ -5,4 +5,5 @@
 
 ; load the zenburn theme
 (load-theme 'zenburn t)
+; (load-theme `tomorrow-night-eighties t)
 ; (load-theme `tomorrow-night t)

@@ -12,6 +12,8 @@
 (load "android_mode_conf")
 
 ;; config local-conf-mode for templates
-(load "local_conf_mode_conf")
+;; (load "local_conf_mode_conf")
 
 
+;; load rcirc conf
+(load "rcirc_conf")

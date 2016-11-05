@@ -43,6 +43,9 @@ alias jdk7='sudo archlinux-java set java-7-openjdk'
 
 # useful general purpose aliases
 alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+alias c='cd'
 alias l='ls'
 alias ll='ls -l'
 pd() {pushd $*}
