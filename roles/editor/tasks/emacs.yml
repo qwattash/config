@@ -1,0 +1,28 @@
+
+- name: Clone spacemacs base
+  git:
+    repo: "{{spacemacs_clone_url}}"
+    dest: "{{user_home}}/.emacs.d"
+
+- name: Install dotspacemacs
+  copy:
+    src: dotspacemacs
+    dest: "{{user_home}}/.spacemacs"
+
+- name: Install emacs daemon service file
+  block:
+    - name: "Make .config"
+      file:
+        path: "{{user_home}}/.config/systemd/user"
+        state: directory
+    - name: "Generate emacs.service"
+      template:
+        src: emacs.service.j2
+        dest: "{{user_home}}/.config/systemd/user/emacs.service"
+
+- name: Enable systemd emacs user service
+  systemd:
+    name: emacs.service
+    scope: user
+    enabled: yes
+    state: started

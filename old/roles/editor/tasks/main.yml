@@ -1,0 +1,19 @@
+#
+# Tasks to set up editor configuration
+#
+
+- file:
+    path: ~/.emacs.d
+    state: directory
+
+- copy:
+    src=emacs-main.el dest=~/.emacs mode=u+rw,g+r,o+r
+
+- shell: emacs -e '(config-install-packages)'
+    
+
+# - template:
+#     src=emacs_base dest=~/.emacs mode=u+rw,g+r,o+r
+    
+# - template:
+    

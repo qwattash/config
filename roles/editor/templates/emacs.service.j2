@@ -1,0 +1,12 @@
+[Unit]
+Description=Emacs user daemon
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon={{ ansible_facts["user_id"] }}_emacsd
+ExecStop=/usr/bin/emacsclient --eval '(kill-emacs)'
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
