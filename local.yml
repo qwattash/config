@@ -1,11 +1,5 @@
 #
 # Main playbook for the client configuration
-# This synchronizes the following to localhost:
-# - emacs configuration
-# - zsh oh-my-zsh configuration
-# - terminal fonts and themes
-# - x11 themes
-# - tmux config and themes
 #
 
 - hosts: localhost
@@ -14,14 +8,8 @@
   gather_facts: yes
 
   vars:
-    oh_my_zsh_clone_url: https://github.com/robbyrussell/oh-my-zsh
     user_home: ~/conftest
 
   roles:
+    - shell
     - editor
-
-  # tasks:
-  #   - name: Clone oh-my-zsh base
-  #     git:
-  #       repo: "{{oh_my_zsh_clone_url}}"
-  #       dest: "{{user_home}}/.oh-my-zsh"

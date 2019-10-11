@@ -26,3 +26,6 @@
     scope: user
     enabled: yes
     state: started
+
+# - name: Sync spacemacs packages
+#   command: emacsclient -s {{ ansible_facts["user_id"] }} --eval '(dotspacemacs/sync-configuration-layers)'

@@ -1,0 +1,24 @@
+#
+# Configure oh-my-zsh
+#
+
+- name: Clone oh-my-zsh base
+  git:
+    repo: "{{ ohmyzsh_clone_url }}"
+    dest: "{{ user_home }}/.oh-my-zsh"
+
+# XXX could use subtree merges to minimize disruption to the custom directory?
+- name: Empty oh-my-zsh custom directory
+  file:
+    state: absent
+    path: "{{ user_home }}/.oh-my-zsh/custom"
+
+- name: Clone oh-my-zsh custom configs
+  git:
+    repo: "{{ ohmyzsh_custom_url }}"
+    dest: "{{ user_home }}/.oh-my-zsh/custom"
+
+- name: Install dotzshrc
+  template:
+    src: dotzshrc.j2
+    dest: "{{ user_home }}/.zshrc"
