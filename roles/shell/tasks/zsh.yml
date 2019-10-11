@@ -7,7 +7,6 @@
     repo: "{{ ohmyzsh_clone_url }}"
     dest: "{{ user_home }}/.oh-my-zsh"
 
-# XXX could use subtree merges to minimize disruption to the custom directory?
 - name: Empty oh-my-zsh custom directory
   file:
     state: absent
@@ -17,6 +16,11 @@
   git:
     repo: "{{ ohmyzsh_custom_url }}"
     dest: "{{ user_home }}/.oh-my-zsh/custom"
+
+- name: Reset oh-my-zsh files
+  command: git reset --hard HEAD
+  args:
+    chdir: "{{ user_home }}/.oh-my-zsh"
 
 - name: Install dotzshrc
   template:

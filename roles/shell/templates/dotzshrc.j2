@@ -77,9 +77,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='emacsclient -c -s {{ ansible_facts["user_id"] }}_emacsd'
+    export EDITOR='emacsclient -q -t -s {{ ansible_facts["user_id"] }}_emacsd'
 else
-    export EDITOR='emacsclient -c -s {{ ansible_facts["user_id"] }}_emacsd'
+    export EDITOR='emacsclient -q -t -s {{ ansible_facts["user_id"] }}_emacsd'
 fi
 
 # ssh
