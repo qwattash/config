@@ -1,0 +1,24 @@
+#
+# Configure the kitty terminal.
+#
+
+- name: Install kitty main configuration
+  block:
+    - name: Make .config/kitty
+      file:
+        path: "{{ user_home }}/.config/kitty"
+        state: directory
+    - name: Install kitty.conf
+      template:
+        src: kitty_main.conf
+        dest: "{{ user_home }}/.config/kitty/kitty.conf"
+
+- name: Install kitty font configuration
+  copy:
+    src: kitty_font.conf
+    dest: "{{ user_home }}/.config/ansible_managed/kitty_font.conf"
+
+- name: Clone kitty base16 theme
+  git:
+    repo: "{{ base16_kitty_clone_url }}"
+    dest: "{{ user_home }}/.config/ansible_managed/base16_kitty"

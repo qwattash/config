@@ -8,8 +8,9 @@
   gather_facts: yes
 
   vars:
-    user_home: ~/conftest
+    user_home: "/home/{{ ansible_facts['user_id'] }}"
 
   roles:
     - shell
     - editor
+    - terminal
