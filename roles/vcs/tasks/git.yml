@@ -1,0 +1,13 @@
+#
+# Global git configuration
+#
+
+- name: Install global git configuration
+  template:
+    src: git.conf
+    dest: "{{ user_home }}/.gitconfig"
+
+- name: Install global gitignore
+  copy:
+    src: gitignore.conf
+    dest: "{{ user_home }}/.config/ansible_managed/gitignore"
