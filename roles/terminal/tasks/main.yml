@@ -11,3 +11,4 @@
 
 - import_tasks: urxvt.yml
 - import_tasks: kitty.yml
+- import_tasks: tmux.yml
