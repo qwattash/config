@@ -1,0 +1,13 @@
+#
+# Top level tasks for configuration of X11 system.
+#
+# This role sets up the configuration for the window manager and
+# graphical applications such as the terminal emulator.
+#
+# Requires the following variables: XXX should be moved to defaults.
+# user_local_confdir = .config/ansible_managed
+#
+
+- import_tasks: kitty.yml
+- import_tasks: urxvt.yml
+- import_tasks: awesome.yml

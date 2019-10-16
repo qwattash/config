@@ -1,0 +1,7 @@
+#
+# Meta configuration
+#
+
+---
+dependencies:
+  - role: conf_headless_base

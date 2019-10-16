@@ -1,0 +1,22 @@
+#
+# Top level tasks for configuration of headless system.
+#
+# This role sets up the configuration for the user shell and editor
+# along with common user resources such as fonts.
+#
+# Requires the following variables: XXX should be moved to defaults.
+# user_local_confdir = .config/ansible_managed
+# conf_git_user_email = uname@gmail.com
+# conf_git_user_id = uname
+#
+
+- name: Sync user configuration directory root
+  file:
+    path: "~/{{user_local_confdir}}"
+    state: directory
+
+- import_tasks: fonts.yml
+- import_tasks: zsh.yml
+- import_tasks: tmux.yml
+- import_tasks: emacs.yml
+- import_tasks: git.yml

@@ -1,0 +1,13 @@
+#
+# Global git configuration
+#
+
+- name: Install global git configuration
+  template:
+    src: git.conf
+    dest: "~/.gitconfig"
+
+- name: Install global gitignore
+  copy:
+    src: gitignore.conf
+    dest: "~/{{ user_local_confdir }}/gitignore"

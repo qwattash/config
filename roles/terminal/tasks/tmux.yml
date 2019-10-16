@@ -1,8 +1,0 @@
-#
-# Configure tmux.
-#
-
-- name: Install tmux conf
-  copy:
-    src: tmux.conf
-    dest: "{{ user_home }}/.tmux.conf"

@@ -1,0 +1,13 @@
+#
+# Configure the rxvt-unicode terminal.
+#
+
+- name: Generate urxvt main configuration
+  template:
+    src: urxvt.conf
+    dest: "~/{{ user_local_confdir }}/urxvt.conf"
+
+- name: Clone terminal theme
+  git:
+    repo: "{{ base16_xresources_clone_url }}"
+    dest: "~/{{ user_local_confdir }}/base16_xresources"

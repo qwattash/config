@@ -1,0 +1,5 @@
+!
+! Add configuration modules
+!
+
+#include "~/{{ user_local_confdir }}/urxvt.conf"

@@ -1,0 +1,10 @@
+#
+# Git repository sources
+#
+---
+# URL to the github repo to clone oh-my-zsh
+ohmyzsh_clone_url: https://github.com/robbyrussell/oh-my-zsh
+# URL to the github repo to clone for zsh customization.
+ohmyzsh_custom_url: https://github.com/qwattash/oh-my-zsh
+# URL to the git repository of spacemacs
+spacemacs_clone_url: https://github.com/syl20bnr/spacemacs

@@ -1,5 +1,0 @@
-!
-! Add configuration modules
-!
-
-#include "{{ user_home }}/.config/ansible_managed/urxvt.conf"
