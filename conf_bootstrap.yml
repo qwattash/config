@@ -9,6 +9,7 @@
 
   vars:
     user_home: "/home/{{ ansible_facts['user_id'] }}"
+    conf_user_local: "{{ user_home }}/.config/ansible_managed"
     conf_git_user_email: mzz.lrd@gmail.com
     conf_git_user_id: "{{ ansible_facts['user_id'] }}"
 
@@ -17,3 +18,4 @@
     - editor
     - terminal
     - vcs
+    - wmanager

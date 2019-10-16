@@ -5,11 +5,11 @@
 - name: Install AwesomeWM top level configuration
   block:
     - name: Make .config/awesome
-    file:
-      path: "{{ user_home }}/.config/awesome"
-      state: directory
+      file:
+        path: "{{ user_home }}/.config/awesome"
+        state: directory
     - name: Sync rc.lua
-      template:
+      copy:
         src: awesome_main_full.lua
         dest: "{{ user_home }}/.config/awesome/rc.lua"
 
