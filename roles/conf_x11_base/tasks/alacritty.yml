@@ -1,0 +1,46 @@
+#
+# Alacritty terminal setup
+#
+
+- name: Sync alacritty main configuration
+  block:
+    - name: Make local configuration directory
+      file:
+        path: "~/.config/alacritty"
+        state: directory
+    - name: Clear previous configuration
+      file:
+        path: "~/.config/alacritty/alacritty.yml"
+        state: absent
+    - name: Sync base configuration file
+      copy:
+        src: alacritty/alacritty_common.yml
+        dest: "~/.config/alacritty/alacritty_common.yml"
+    - name: Sync font configuration file
+      copy:
+        src: alacritty/alacritty_font.yml
+        dest: "~/.config/alacritty/alacritty_font.yml"
+    - name: Sync keybindings configuration file
+      copy:
+        src: alacritty/alacritty_keybindings.yml
+        dest: "~/.config/alacritty/alacritty_keybindings.yml"
+
+- name: Sync alacritty base16 theme
+  block:
+    - name: Clone alacritty base16 theme
+      git:
+        repo: "{{ base16_alacritty_clone_url }}"
+        dest: "~/{{ user_local_confdir }}/base16_alacritty"
+    - name: Move alacritty theme config for merging
+      copy:
+        remote_src: yes
+        src: "~/{{ user_local_confdir }}/base16_alacritty/colors/base16-zenburn.yml"
+        dest: "~/.config/alacritty/base16_zenburn.yml"
+
+- name: Merge alacritty configuration files
+  block:
+    - name: Merge theme
+      assemble:
+        remote_src: yes
+        src: "~/.config/alacritty"
+        dest: "~/.config/alacritty/alacritty.yml"

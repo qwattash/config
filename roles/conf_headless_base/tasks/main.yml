@@ -12,7 +12,7 @@
 
 - name: Sync user configuration directory root
   file:
-    path: "~/{{user_local_confdir}}"
+    path: "~/{{ user_local_confdir }}"
     state: directory
 
 - import_tasks: fonts.yml
