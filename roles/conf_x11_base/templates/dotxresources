@@ -2,4 +2,4 @@
 ! Add configuration modules
 !
 
-#include "~/{{ user_local_confdir }}/urxvt.conf"
+#include "{{ ansible_env.HOME }}/{{ user_local_confdir }}/urxvt.conf"
