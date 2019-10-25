@@ -7,21 +7,11 @@
     repo: "{{ ohmyzsh_clone_url }}"
     dest: "~/.oh-my-zsh"
 
-# XXX-AM: this causes continue synchronization, find a way to avoid it.
-- name: Empty oh-my-zsh custom directory
-  file:
-    state: absent
-    path: "~/.oh-my-zsh/custom"
-
-- name: Clone oh-my-zsh custom configs
-  git:
-    repo: "{{ ohmyzsh_custom_url }}"
+- name: Sync oh-my-zsh custom configs
+  copy:
+    src: "zsh-custom/"
     dest: "~/.oh-my-zsh/custom"
-
-- name: Reset oh-my-zsh files
-  command: git reset --hard HEAD
-  args:
-    chdir: "~/.oh-my-zsh"
+    force: yes
 
 - name: Install dotzshrc
   template:
