@@ -1,0 +1,43 @@
+# Maintainer: Alfredo Mazzinghi <mzz.lrd@gmail.com>
+pkgname=st-zenburn-qwattash-git
+pkgver=r1077.1f09f0b_r5.b3d0d4f
+pkgrel=1
+pkgdesc="st terminal with custom configuration and zenburn color theme."
+arch=('x86_64')
+url="https://www.github.com/qwattash/config.git"
+license=('GPL')
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=("st")
+conflicts=("st-git")
+source=('git+https://git.suckless.org/st'
+        'git+https://github.com/honza/base16-st.git')
+md5sums=('SKIP' 'SKIP')
+_src_st="st"
+_src_base16_st="base16-st"
+
+pkgver() {
+	  cd "$srcdir/$_src_st"
+    st_pkgver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_src_base16_st"
+    theme_pkgver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    # Git, no tags available
+	  printf "r%s_r%s" "$st_pkgver" "$theme_pkgver"
+}
+
+prepare() {
+	  cd "$srcdir/$_src_st"
+	  patch -p1 -i "$srcdir/config.def.h.patch"
+}
+
+build() {
+    cd "$srcdir/$_src_st"
+	  CFLAGS="-I${srcdir}/${_src_base16_st}/build" make
+}
+
+package() {
+    cd "$srcdir/$_src_st"
+	  make DESTDIR="$pkgdir/" install
+}
