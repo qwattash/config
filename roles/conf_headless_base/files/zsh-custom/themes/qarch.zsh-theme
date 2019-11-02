@@ -35,7 +35,7 @@ b_cyan=014
 b_white=015
 
 qarch_host() {
-    print -n "%{%F{$n_black}%K{$n_blue}%}%n@%m %{%F{$n_blue}%K{$n_green}%}$QARCH_SEPARATOR%{%k%f%}"
+    print -n "%{%F{$n_black}%K{$n_blue}%} %n@%m %{%F{$n_blue}%K{$n_green}%}$QARCH_SEPARATOR%{%k%f%}"
 }
 
 qarch_path() {
@@ -62,7 +62,7 @@ qarch_vcs() {
 
 qarch_create() {
     vcs_info
-    PROMPT="%{%f%k%b%} $(qarch_host)$(qarch_path) %(!.#.$) "
+    PROMPT="%{%f%k%b%}$(qarch_host)$(qarch_path) %(!.#.$) "
     RPROMPT="$(qarch_vcs)"
 }
 
