@@ -54,7 +54,7 @@ qarch_vcs() {
         else
             vcs_bg="${n_green}"
         fi
-        vcs_prompt="%{%F{$vcs_fg}%K{$vcs_bg}%}$QARCH_VCS_BAR_LEFT ${vcs_info_msg_0_} $QARCH_VCS_BAR_RIGHT%{%k%f%}"
+        vcs_prompt="%{%F{$vcs_bg}%}$QARCH_VCS_BAR_LEFT%{%F{$vcs_fg}%K{$vcs_bg}%} ${vcs_info_msg_0_} %{%F{$vcs_bg}%k%}$QARCH_VCS_BAR_RIGHT%{%k%f%}"
     fi
 
     print -n "${vcs_prompt}"
