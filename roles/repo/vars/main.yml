@@ -1,0 +1,9 @@
+#
+# Repo configuration variables
+#
+
+# user home relative path for local repo
+user_repo_relpath: "pkg"
+
+# user local repository path, relative to user_repo_relpath
+user_repo_name: "aur_local"

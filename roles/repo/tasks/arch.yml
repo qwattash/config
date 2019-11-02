@@ -1,0 +1,23 @@
+#
+# Top level Arch Linux local repository setup.
+#
+
+- name: Make top level repo
+  file:
+    path: "~/{{ user_repo_relpath }}"
+    state: directory
+
+- name: "Build custom package: st"
+  block:
+    - name: Sync PKGBUILD
+      copy:
+        src: "st"
+        dest: "~/{{ user_repo_relpath }}"
+    - name: Build package
+      command: makepkg -f -c
+      args:
+        chdir: "~/{{ user_repo_relpath }}/st"
+    - name: Add to repo {{ user_repo_name }}
+      command: find st -name '*.pkg.tar.xz' -exec repo-add "{{ user_repo_name }}/{{ user_repo_name }}.db.tar" {} ; -exec mv {} {{ user_repo_name }} ;
+      args:
+        chdir: "~/{{ user_repo_relpath }}"

@@ -1,12 +1,2 @@
 *~
 build
-
-# arch linux package builds
-*.pkg.tar.xz
-
-# arch makepkg output
-repo/arch/st/*
-!repo/arch/st/src
-repo/arch/st/src/*
-!repo/arch/st/src/*.patch
-!repo/arch/st/PKGBUILD

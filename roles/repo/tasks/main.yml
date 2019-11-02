@@ -1,0 +1,5 @@
+#
+# Top level tasks for local repository setup.
+#
+
+- import_tasks: arch.yml

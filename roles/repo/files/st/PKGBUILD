@@ -6,7 +6,7 @@ pkgdesc="st terminal with custom configuration and zenburn color theme."
 arch=('x86_64')
 url="https://www.github.com/qwattash/config.git"
 license=('GPL')
-depends=()
+depends=("libxft" "freetype2")
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -30,6 +30,7 @@ pkgver() {
 prepare() {
 	  cd "$srcdir/$_src_st"
 	  patch -p1 -i "$srcdir/config.def.h.patch"
+    patch -p1 -i "$srcdir/config.mk.patch"
 }
 
 build() {
