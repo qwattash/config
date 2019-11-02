@@ -2,19 +2,19 @@
 #
 # Copyright (c) 2019 Alfredo Mazzinghi (qwattash)
 #
-# Custom zsh font.
+# Custom zsh theme configuration.
 # Note that this requries a powerline patched font to render correctly.
 #
 
 # QARCH_SEPARATOR="\uE0CC"
 QARCH_SEPARATOR="\uE0B0"
-QARCH_VCS_BAR_LEFT="\uE0D2"
-QARCH_VCS_BAR_RIGHT="\uE0D4"
+QARCH_VCS_BAR_LEFT="\uE0B2"
+QARCH_VCS_BAR_RIGHT="\uE0B0"
 QARCH_PLUSMINUS="\u00B1"
 QARCH_BRANCH="\uE0A0"
 QARCH_DETACHED="\u2934"
 
-# color shortcuts
+# color shortcuts (based on oh-my-zsh spectrum)
 # normal
 n_black=000
 n_red=001
@@ -62,7 +62,7 @@ qarch_vcs() {
 
 qarch_create() {
     vcs_info
-    PROMPT="%{%f%k%b%}$(qarch_host)$(qarch_path) %(!.#.$) "
+    PROMPT="%{%f%k%b%} $(qarch_host)$(qarch_path) %(!.#.$) "
     RPROMPT="$(qarch_vcs)"
 }
 
