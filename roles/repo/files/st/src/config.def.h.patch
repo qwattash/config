@@ -1,10 +1,10 @@
 diff --git a/config.def.h b/config.def.h
-index 546edda..ab04175 100644
+index 546edda..7b0a51a 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -1,11 +1,13 @@
  /* See LICENSE file for copyright and license details. */
- 
+
 +#include "base16-zenburn-theme.h"
 +
  /*
@@ -13,9 +13,9 @@ index 546edda..ab04175 100644
   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
   */
 -static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-+static char *font = "Anonymous Pro Qwattash:pixelsize=14:antialias=true:autohint=true";
++static char *font = "Anonymous Pro Qwattash:pixelsize=16:antialias=true:autohint=false";
  static int borderpx = 2;
- 
+
  /*
 @@ -16,7 +18,7 @@ static int borderpx = 2;
   * 4: value of shell in /etc/passwd
@@ -25,20 +25,20 @@ index 546edda..ab04175 100644
 +static char *shell = "/bin/zsh";
  char *utmp = NULL;
  char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
- 
+
 @@ -63,7 +65,7 @@ static unsigned int cursorthickness = 2;
  static int bellvolume = 0;
- 
+
  /* default TERM value */
 -char *termname = "st-256color";
 +char *termname = "xterm-256color";
- 
+
  /*
   * spaces per tab
 @@ -82,45 +84,6 @@ char *termname = "st-256color";
   */
  unsigned int tabspaces = 8;
- 
+
 -/* Terminal colors (16 first used in escape sequence) */
 -static const char *colorname[] = {
 -	/* 8 normal colors */
