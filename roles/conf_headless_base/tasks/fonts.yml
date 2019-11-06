@@ -9,8 +9,22 @@
         path: "~/.local/share/fonts"
         state: directory
     - name: Sync custom fonts
-      copy:
-        src: anonymous-pro-qwattash/AnonymousProQwattash.ttf
-        dest: "~/.local/share/fonts/AnonymousProQwattash.ttf"
+      block:
+        - name: Sync custom font AnonymousProLHQwattash
+          copy:
+            src: anonymous-pro-qwattash/AnonymousProLHQwattash.ttf
+            dest: "~/.local/share/fonts/AnonymousProLHQwattash.ttf"
+        - name: Sync custom font AnonymousProLHQwattash Bold
+          copy:
+            src: anonymous-pro-qwattash/AnonymousProLHQwattash-Bold.ttf
+            dest: "~/.local/share/fonts/AnonymousProLHQwattash-Bold.ttf"
+        - name: Sync custom font AnonymousProLHQwattash Italic
+          copy:
+            src: anonymous-pro-qwattash/AnonymousProLHQwattash-Italic.ttf
+            dest: "~/.local/share/fonts/AnonymousProLHQwattash-Italic.ttf"
+        - name: Sync custom font AnonymousProLHQwattash Bold-Italic
+          copy:
+            src: anonymous-pro-qwattash/AnonymousProLHQwattash-BoldItalic.ttf
+            dest: "~/.local/share/fonts/AnonymousProLHQwattash-BoldItalic.ttf"
     - name: Rebuild font cache
       command: fc-cache -f -v
