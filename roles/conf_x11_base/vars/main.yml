@@ -1,7 +1,5 @@
 
 # URL to clone the base16 theme for xresources.
 base16_xresources_clone_url: https://github.com/binaryplease/base16-xresources.git
-# URL to clone the base16 theme for kitty terminal
-base16_kitty_clone_url: https://github.com/kdrag0n/base16-kitty.git
 # URL to clone the base16 theme for the alacritty terminal
 base16_alacritty_clone_url: https://github.com/aaron-williamson/base16-alacritty.git

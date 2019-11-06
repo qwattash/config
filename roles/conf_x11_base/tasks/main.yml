@@ -8,7 +8,6 @@
 # user_local_confdir = .config/ansible_managed
 #
 
-- import_tasks: kitty.yml
-- import_tasks: alacritty.yml
-- import_tasks: urxvt.yml
+# - import_tasks: alacritty.yml
+# - import_tasks: urxvt.yml
 - import_tasks: awesome.yml
