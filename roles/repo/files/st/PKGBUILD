@@ -1,6 +1,6 @@
 # Maintainer: Alfredo Mazzinghi <mzz.lrd@gmail.com>
 pkgname=st-zenburn-qwattash-git
-pkgver=r1077.1f09f0b_r5.b3d0d4f
+pkgver=r1078.8386642_r5.b3d0d4f
 pkgrel=1
 pkgdesc="st terminal with custom configuration and zenburn color theme."
 arch=('x86_64')
@@ -29,6 +29,7 @@ pkgver() {
 
 prepare() {
 	  cd "$srcdir/$_src_st"
+    git reset --hard HEAD
 	  patch -p1 -i "$srcdir/config.def.h.patch"
     patch -p1 -i "$srcdir/config.mk.patch"
 }
