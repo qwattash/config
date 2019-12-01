@@ -32,6 +32,8 @@ prepare() {
     git reset --hard HEAD
 	  patch -p1 -i "$srcdir/config.def.h.patch"
     patch -p1 -i "$srcdir/config.mk.patch"
+    patch -p1 -i "$srcdir/bold_is_not_bright.patch"
+    patch -p1 -i "$srcdir/anysize.patch"
 }
 
 build() {
