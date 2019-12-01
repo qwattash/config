@@ -39,7 +39,7 @@ qarch_host() {
 }
 
 qarch_path() {
-    print -n "%{%F{$n_black}%K{$n_green}%} %6~ %{%F{$n_green}%k%}$QARCH_SEPARATOR%{%k%f%}"
+    print -n "%{%F{$n_black}%K{$n_green}%} %5~ %{%F{$n_green}%k%}$QARCH_SEPARATOR%{%k%f%}"
 }
 
 qarch_vcs() {
