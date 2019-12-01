@@ -2,25 +2,35 @@
 # Setup awesome WM configuration.
 #
 
-- name: Install AwesomeWM top level configuration
+# - name: Install AwesomeWM top level configuration
+#   block:
+#     - name: Make .config/awesome
+#       file:
+#         path: "~/.config/awesome"
+#         state: directory
+#     - name: Sync rc.lua
+#       copy:
+#         src: awesome_main_full.lua
+#         dest: "~/.config/awesome/rc.lua"
+
+- name: Install AwesomeWM configuration components
   block:
     - name: Make .config/awesome
       file:
         path: "~/.config/awesome"
         state: directory
+    - name: Make slave config directory
+      file:
+        path: "~/{{ user_local_confdir }}/awesome"
+        state: directory
     - name: Sync rc.lua
-      copy:
-        src: awesome_main_full.lua
+      template:
+        src: awesome_main.lua
         dest: "~/.config/awesome/rc.lua"
-
-# - name: Install AwesomeWM configuration components
-#   block:
-#     - name: Install layout configi
-#     - name: Install wallpaper config
-#     - name: Install menubar config
-#     - name: Install key bindings config
-#     - name: Install clients config
-#     - name: Install widget config
+    - name: Sync configuration modules
+      copy:
+        src: awesome/qwattash_conf
+        dest: "~/{{ user_local_confdir }}/awesome"
 
 # - name: Clone awesome theme repository
 #   git:

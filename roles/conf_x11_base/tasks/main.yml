@@ -8,6 +8,9 @@
 # user_local_confdir = .config/ansible_managed
 #
 
-# - import_tasks: alacritty.yml
-# - import_tasks: urxvt.yml
+
+- import_tasks: alacritty.yml
+  when: x11_terminal == "alacritty"
+- import_tasks: urxvt.yml
+  when: x11_terminal == "urxvt"
 - import_tasks: awesome.yml
