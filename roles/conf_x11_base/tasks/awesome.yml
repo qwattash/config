@@ -31,8 +31,15 @@
       copy:
         src: awesome/qwattash_conf
         dest: "~/{{ user_local_confdir }}/awesome"
-
-# - name: Clone awesome theme repository
-#   git:
-#     repo: "{{ base16_awesome_clone_url }}"
-#     dest: "~/{{ user_local_confdir }}/base16_awesome"
+    - name: Sync theme configuration directory
+      file:
+        path: "~/{{ user_local_confdir }}/awesome/theme"
+        state: directory
+    - name: Sync theme configuration
+      template:
+        src: awesome_theme.lua
+        dest: "~/{{ user_local_confdir }}/awesome/theme/theme.lua"
+    - name: Sync theme files
+      copy:
+        src: awesome/themes/icons
+        dest: "~/{{ user_local_confdir }}/awesome/theme"

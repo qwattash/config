@@ -41,7 +41,7 @@ do
 end
 -- }}}
 
-beautiful.init("~/.config/awesome/zenburn/theme.lua")
+beautiful.init("~/{{ user_local_confdir }}/awesome/theme/theme.lua")
 
 q_keyboard.initKeyBindings()
 q_layout.initLayouts()

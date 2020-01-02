@@ -10,3 +10,7 @@
 	path = themes/tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme.git
 	branch = master
+[submodule "roles/conf_x11_base/files/awesome/themes/schemes/zenburn"]
+	path = roles/conf_x11_base/files/awesome/themes/schemes/zenburn
+	url = https://github.com/elnawe/base16-zenburn-scheme
+	branch = master

@@ -5,6 +5,9 @@ base16_xresources_clone_url: https://github.com/binaryplease/base16-xresources.g
 # URL to clone the base16 theme for the alacritty terminal
 base16_alacritty_clone_url: https://github.com/aaron-williamson/base16-alacritty.git
 
+# URL to clone for the base16 master template repository
+base16_master_templates_clone_url: https://github.com/qwattash/config.git
+
 # Default terminal to use
 # Allowed values are {st, urxvt, alacritty}
 x11_terminal: st
