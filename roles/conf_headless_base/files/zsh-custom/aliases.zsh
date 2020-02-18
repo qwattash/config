@@ -33,6 +33,10 @@ alias ll='ls -l'
 pd() {pushd $*}
 alias pp='popd'
 
+# clipboard file I/O
+alias xc "xclip -sel c -i"
+alias xp "xclip -sel c -o"
+
 # programs shortcuts
 alias e='emacsclient -q -c -s qwattash_emacsd'
 alias pdf='evince'
