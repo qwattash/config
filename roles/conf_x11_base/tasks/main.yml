@@ -14,3 +14,4 @@
 - import_tasks: urxvt.yml
   when: x11_terminal == "urxvt"
 - import_tasks: awesome.yml
+- import_tasks: fonts.yml

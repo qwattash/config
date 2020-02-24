@@ -15,7 +15,6 @@
     path: "~/{{ user_local_confdir }}"
     state: directory
 
-- import_tasks: fonts.yml
 - import_tasks: zsh.yml
 - import_tasks: tmux.yml
 - import_tasks: emacs.yml
